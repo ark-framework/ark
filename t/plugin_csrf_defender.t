@@ -32,8 +32,15 @@ use Test::More;
     sub test_get :Local {
         my ($self, $c) = @_;
 
-        $c->res->body('<form></form>');
+        $c->res->body(q{<form action="" method="post"></form>});
     }
+
+    sub test_form :Local {
+        my ($self, $c) = @_;
+
+        $c->res->body(q{<form></form>});
+    }
+
 }
 
 use Ark::Test 'TestApp',
@@ -76,6 +83,11 @@ subtest 'validate NG' => sub {
 subtest 'rewrite body' => sub {
     my $c = ctx_get '/test_get';
     like $c->res->body, qr/name="csrf_token"/;
+};
+
+subtest 'rewrite body' => sub {
+    my $c = ctx_get '/test_form';
+    unlike $c->res->body, qr/name="csrf_token"/;
 };
 
 done_testing;

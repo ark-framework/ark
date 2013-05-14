@@ -140,7 +140,9 @@ after finalize_body => sub {
 
     my $param_name = $c->csrf_defender_param_name;
     my $token      = $c->csrf_token;
-    $html =~ s!(<form\s*.*?>)!$1\n<input type="hidden" name="$param_name" value="$token" />!isg;
+
+    my $reg = qr/<form\s*.*?\s*method=['"]?post['"]?\s*.*?>/;
+    $html =~ s!($reg)!$1\n<input type="hidden" name="$param_name" value="$token" />!isg;
 
     $c->res->body($html);
 };
