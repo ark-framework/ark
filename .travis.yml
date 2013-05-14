@@ -10,4 +10,4 @@ before_install:
 install:
   cpanm --with-develop --mirror=http://cpan.mirrors.travis-ci.org/ --mirror=https://github.com/kayac/orepan/raw/master/ --mirror-only --installdeps --notest .
 script:
-  perl Makefile.PL && cover -test -report coveralls
+  perl Makefile.PL && cover -test --ignore_re='lib/Ark/View/' -report coveralls
