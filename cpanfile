@@ -33,29 +33,3 @@ requires 'Path::AttrRouter'  => '0.03';
 # build-in form generator/validator
 requires 'HTML::Shakan' => '0.16';
 requires 'Clone';
-
-feature 'MT', 'Support MicroTemplate template engine' => sub {
-    recommends 'Text::MicroTemplate::Extended' => '0.09';
-};
-
-feature 'DBIC', 'Support DBIx::Class OR Mapper' => sub {
-    suggests 'DBIx::Class';
-    suggests 'DBD::SQLite';
-};
-
-feature 'OpenID', 'Support OpenID Authentication' => sub {
-    suggests 'Net::OpenID::Consumer';
-    suggests 'LWPx::ParanoidAgent';
-};
-
-feature 'I18N', 'Support I18N' => sub {
-    recommends 'Locale::Maketext::Lexicon';
-    recommends 'Locale::Maketext::Simple';
-};
-
-feature 'Mobile', 'Support Mobile App' => sub {
-    suggests 'Encode::JP::Mobile';
-    suggests 'HTTP::MobileAgent';
-    suggests 'HTTP::MobileAgent::Plugin::Charset';
-    suggests 'OAuth::Lite';
-};
