@@ -69,3 +69,14 @@ do {
 };
 
 1;
+__END__
+
+=head1 NAME
+
+Ark - light weight Catalyst-ish web application framework
+
+=head1 AUTHOR
+
+Daisuke Murase <typester@cpan.org>
+
+=cut

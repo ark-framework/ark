@@ -1,6 +1,7 @@
 on develop => sub {
     requires 'Module::Install';
     requires 'Module::Install::AuthorTests';
+    requires 'Module::Install::ReadmeMarkdownFromPod';
     requires 'Module::Install::CPANfile';
 };
 

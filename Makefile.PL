@@ -7,6 +7,7 @@ $Module::Install::AUTHOR = 0 if $ENV{TRAVIS};
 name 'Ark';
 license 'perl';
 all_from 'lib/Ark.pm';
+readme_markdown_from 'lib/Ark.pm';
 
 perl_version '5.008001';
 cpanfile;

@@ -1,0 +1,9 @@
+# NAME
+
+[![Build Status](https://secure.travis-ci.org/typester/ark-perl.png?branch=master)](http://travis-ci.org/typester/ark-perl)[![Coverage Status](https://coveralls.io/repos/typester/ark-perl/badge.png?branch=master)](https://coveralls.io/r/typester/ark-perl)
+
+Ark - light weight Catalyst-ish web application framework
+
+# AUTHOR
+
+Daisuke Murase <typester@cpan.org>
