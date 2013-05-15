@@ -1,5 +1,10 @@
 Revision history for Perl module Ark
 
+0.37    Wed May 15 21:10:47 JST 2013
+     - CSRFDefender filters post form only
+     - Session::State::URI is enabled in non mobile with specifications
+     - disable uri_for overriding with turning `uri_for_override` specificaion to false
+
 0.36    Tue May 14 11:59:34 JST 2013
      - fix bug. CSRFDefender ultimately hadn't worked!
      - Can't call $session->(set|remove) method after finalize session

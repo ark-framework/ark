@@ -11,8 +11,10 @@ inc/Module/Install/Fetch.pm
 inc/Module/Install/Include.pm
 inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
+inc/Module/Install/ReadmeMarkdownFromPod.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
+inc/Pod/Markdown.pm
 lib/Ark.pm
 lib/Ark/Action.pm
 lib/Ark/ActionClass/Form.pm
@@ -69,6 +71,7 @@ Makefile.PL
 MANIFEST			This list of files
 META.json
 META.yml
+README.mkdn
 t/001_load.t
 t/002_action_path.t
 t/003_action_dispatcher.t
@@ -149,6 +152,8 @@ t/plugin_session.t
 t/plugin_session_expire.t
 t/plugin_session_model.t
 t/plugin_session_state_opensocial.t
+t/plugin_session_state_uri.t
+t/plugin_session_state_uri_for.t
 t/plugin_unicode.t
 t/redirect_and_detach.t
 t/regexp_action.t
