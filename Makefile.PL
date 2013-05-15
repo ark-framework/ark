@@ -5,7 +5,7 @@ license 'perl';
 
 all_from 'lib/Ark.pm';
 
-test_requires 'Test::More';
+test_requires 'Test::More' => '0.96';
 test_requires 'Test::Output';
 
 perl_version '5.008001';
@@ -29,7 +29,7 @@ requires 'Devel::StackTrace';
 requires 'Class::Method::Modifiers::Fast';
 requires 'Exporter::AutoClean';
 requires 'Object::Container' => '0.08';
-requires 'Path::AttrRouter';
+requires 'Path::AttrRouter' => '0.02';
 requires 'MouseX::Foreign';
 
 # build-in form generator/validator

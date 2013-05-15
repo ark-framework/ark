@@ -14,6 +14,10 @@ plan skip_all => 'Cache::MemoryCache required to run this test' if $@;
         Session::Store::Model
         /;
 
+    conf 'Plugin::Session' => {
+        expire => 3,
+    };
+
     conf 'Plugin::Session::Store::Model' => {
         model => 'Session',
     };
@@ -52,6 +56,11 @@ plan skip_all => 'Cache::MemoryCache required to run this test' if $@;
 
         $c->res->body( $count );
     }
+
+    sub prefix: Local {
+        my ($self, $c) = @_;
+        $c->res->body( $c->session->store_model_key_prefix );
+    }
 }
 
 plan 'no_plan';
@@ -74,4 +83,30 @@ use Ark::Test 'T1',
 
     is(get('/incr'), 1, 're-increment first ok'); # XXX: this is test for Ark::Test: should be sepalate test.
     is(get('/incr'), 2, 're-increment second ok');
+}
+
+{
+    is(get('/prefix'), 'session:', 'key_prefix is default');
+}
+
+{
+    package T1;
+    use Ark;
+    conf 'Plugin::Session::Store::Model' => {
+        key_prefix => 'key_prefix_of_session:',
+        model      => 'Session',
+    };
+}
+
+{
+    is(get('/prefix'), 'key_prefix_of_session:', 'specified prefix used');
+}
+
+{
+    request(GET => '/test_set');
+    is(get('/test_get'), 'testdata', 'session get ok');
+    sleep 1;
+    is(get('/test_get'), 'testdata', 'session get after 1sec ok');
+    sleep 3;
+    is(get('/test_get'), '', 'session expired ok');
 }

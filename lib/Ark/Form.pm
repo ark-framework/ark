@@ -73,6 +73,7 @@ has fields => (
                 }
 
                 if (my $choices = delete $params{choices}) {
+                    $params{choices} = [];
                     while (my ($v, $l) = splice @$choices, 0, 2) {
                         push @{ $params{choices} }, $v, $self->localize($l);
                     }
@@ -261,7 +262,7 @@ sub localize {
 
 sub error_message_plain {
     my ($self, $name) = @_;
-    return unless $self->submitted && $self->is_error($name);
+    return unless $self->is_error($name);
 
     my ($error) =
         grep { $_->[0] eq $name } @{ $self->_shakan->_fvl->{_error_ary} || [] }
@@ -272,7 +273,7 @@ sub error_message_plain {
 
 sub error_messages_plain {
     my ($self, $name) = @_;
-    return unless $self->submitted && $self->is_error($name);
+    return unless $self->is_error($name);
 
     my (@errors) =
         grep { $_->[0] eq $name } @{ $self->_shakan->_fvl->{_error_ary} || [] }
@@ -319,6 +320,7 @@ sub _create_error_message {
 
 sub error_message {
     my ($self, $name) = @_;
+    return unless $self->submitted;
     sprintf($self->message_format, $self->error_message_plain($name) || return);
 }
 
