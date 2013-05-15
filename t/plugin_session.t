@@ -1,4 +1,6 @@
-use Test::Base;
+use strict;
+use warnings;
+use Test::More;
 
 {
     package TestApp;
@@ -60,8 +62,6 @@ use Test::Base;
         $c->forward('incr');
     }
 }
-
-plan 'no_plan';
 
 use Ark::Test 'TestApp',
     components       => [qw/Controller::Root/],
@@ -146,3 +146,5 @@ subtest 'dies after finalize' => sub {
     $request->header( Cookie => "testapp_session=$sid" );
     is request($request)->content, 1, 'old session already expired';
 }
+
+done_testing;
