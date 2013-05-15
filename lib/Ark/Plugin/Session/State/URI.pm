@@ -14,8 +14,8 @@ has uri_verify_ua => (
     is      => 'rw',
     lazy    => 1,
     default => sub {
-        my $self = shift;
-        $self->class_config->{verify_ua} || 1;
+        my $conf = shift->class_config;
+        exists $conf->{verify_ua} ? $conf->{verify_ua} : 1;
     },
 );
 
@@ -23,8 +23,17 @@ has uri_rewrite_mobile_only => (
     is      => 'rw',
     lazy    => 1,
     default => sub {
-        my $self = shift;
-        $self->class_config->{mobile_only} || 1;
+        my $conf = shift->class_config;
+        exists $conf->{mobile_only} ? $conf->{mobile_only} : 1;
+    },
+);
+
+has uri_for_override => (
+    is      => 'ro',
+    lazy    => 1,
+    default => sub {
+        my $conf = shift->class_config;
+        exists $conf->{uri_for_override} ? $conf->{uri_for_override} : 1;
     },
 );
 

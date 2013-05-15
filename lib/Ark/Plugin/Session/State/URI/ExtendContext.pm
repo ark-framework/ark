@@ -7,7 +7,7 @@ around uri_for => sub {
 
     my $session = $context->session;
 
-    if (my $sid = $session->uri_session_id) {
+    if ($session->uri_for_override && (my $sid = $session->uri_session_id)) {
         my $uri = $next->(@_);
 
         my %p = $uri->query_form;
