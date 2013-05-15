@@ -5,7 +5,7 @@ use Any::Moose '::Exporter';
 
 use Ark::Core;
 
-our $VERSION = '0.22';
+our $VERSION = '0.23';
 
 do {
     my %EXPORTS;
