@@ -43,7 +43,7 @@ has json_dumper => (
     },
 );
 
-# steel code from Catalyst::View::JSON
+# steal code from Catalyst::View::JSON
 sub process {
     my ($self, $c) = @_;
 
