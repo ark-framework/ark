@@ -29,28 +29,20 @@ sub prepare_encoding {
     my $req = $c->request;
 
     my $encode = sub {
-        my ($p, $skip) = @_;
+        my ($p) = @_;
 
-        if (blessed $p and $p->isa('Hash::MultiValue')) {
-            return if $skip;
-            $p->each(sub {
-                $_[1] = decode($c->encoding, $_[1]);
-            });
-        }
-        else {
-            # backward compat
-            for my $value (values %$p) {
-                next if ref $value and ref $value ne 'ARRAY';
-                $_ = decode($c->encoding, $_) for ref $value ? @$value : ($value);
-            }
-        }
+        my $decoded = Hash::MultiValue->new;
+        my $enc = $c->encoding;
+
+        $p->each(sub {
+            $decoded->add( $_[0], decode($enc, $_[1]) );
+        });
+        $decoded;
     };
 
-    $encode->($req->query_parameters);
-    $encode->($req->body_parameters);
-
-    $req->env->{'plack.request.merged'} = undef; #clear cache
-    $encode->($req->parameters, 1);
+    $req->{'request.query'}  = $encode->($req->raw_query_parameters);
+    $req->{'request.body'}   = $encode->($req->raw_body_parameters);
+    $req->{'request.merged'} = undef;
 }
 
 my %htmlspecialchars = ( '&' => '&amp;', '<' => '&lt;', '>' => '&gt;', '"' => '&quot;' );
@@ -65,14 +57,14 @@ sub finalize_encoding {
         $body = encode($c->encoding, $body, sub {
             my $char = shift;
             my $out  = Encode::JP::Mobile::FB_CHARACTER()->($char);
-            
+
             if ($c->res->content_type =~ /html$|xml$/) {
                 $out =~ s/([$htmlspecialchars])/$htmlspecialchars{$1}/ego; # for (>３<)
             }
-        
+
             $out;
         });
-        
+
         $c->res->body($body);
     }
 }

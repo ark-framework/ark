@@ -6,12 +6,11 @@ on develop => sub {
 };
 
 on test => sub {
-    requires 'Test::More' => '0.96';
+    requires 'Test::More' => '0.98';
     requires 'Test::Output';
 };
 
-requires 'Plack';
-requires 'Plack::Request';
+requires 'Plack', '0.9910';
 requires 'CGI::Simple';
 requires 'Mouse'   => '1.0';
 requires 'Try::Tiny' => '0.02';
