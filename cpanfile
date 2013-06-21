@@ -34,3 +34,5 @@ requires 'Path::AttrRouter'  => '0.03';
 # build-in form generator/validator
 requires 'HTML::Shakan' => '0.16';
 requires 'Clone';
+
+recommends 'URL::Encode::XS';
