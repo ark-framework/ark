@@ -28,21 +28,7 @@ sub prepare_encoding {
     my ($c) = @_;
     my $req = $c->request;
 
-    my $encode = sub {
-        my ($p) = @_;
-
-        my $decoded = Hash::MultiValue->new;
-        my $enc = $c->encoding;
-
-        $p->each(sub {
-            $decoded->add( $_[0], decode($enc, $_[1]) );
-        });
-        $decoded;
-    };
-
-    $req->{'request.query'}  = $encode->($req->raw_query_parameters);
-    $req->{'request.body'}   = $encode->($req->raw_body_parameters);
-    $req->{'request.merged'} = undef;
+    $req->decode_paremeters($c->encoding);
 }
 
 my %htmlspecialchars = ( '&' => '&amp;', '<' => '&lt;', '>' => '&gt;', '"' => '&quot;' );

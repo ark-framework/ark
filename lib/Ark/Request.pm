@@ -3,6 +3,7 @@ use Mouse;
 
 extends 'Plack::Request';
 
+use Encode;
 use URI::WithBase;
 use URL::Encode;
 use Path::AttrRouter::Match;
@@ -100,6 +101,25 @@ sub raw_param {
     my $key = shift;
     return $self->raw_parameters->{$key} unless wantarray;
     return $self->raw_parameters->get_all($key);
+}
+
+sub decode_paremeters {
+    my ($self, $enc) = @_;
+
+    $enc = Encode::find_encoding($enc) unless ref $enc;
+    my $encode = sub {
+        my ($p) = @_;
+
+        my $decoded = Hash::MultiValue->new;
+        $p->each(sub {
+            $decoded->add( $_[0], decode($enc, $_[1]) );
+        });
+        $decoded;
+    };
+
+    $self->{'request.query'}  = $encode->($self->raw_query_parameters);
+    $self->{'request.body'}   = $encode->($self->raw_body_parameters);
+    $self->{'request.merged'} = undef;
 }
 
 1;
