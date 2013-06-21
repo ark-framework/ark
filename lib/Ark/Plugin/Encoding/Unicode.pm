@@ -20,12 +20,9 @@ sub prepare_encoding {
         $decoded;
     };
 
-    $req->env->{'plack.request.query'} = $encode->($req->query_parameters);
-    $req->env->{'plack.request.body'}  = $encode->($req->body_parameters);
-
-    if ($req->env->{'plack.request.merged'}) {
-        $req->env->{'plack.request.merged'} = $encode->($req->env->{'plack.request.merged'});
-    }
+    $req->{'request.query'}  = $encode->($req->raw_query_parameters);
+    $req->{'request.body'}   = $encode->($req->raw_body_parameters);
+    $req->{'request.merged'} = undef;
 };
 
 sub finalize_encoding {

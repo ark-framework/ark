@@ -18,6 +18,7 @@ requires 'Try::Tiny' => '0.02';
 requires 'Path::Class'  => '0.16';
 requires 'URI';
 requires 'URI::WithBase';
+requires 'URL::Encode';
 requires 'Text::MicroTemplate';
 requires 'Text::SimpleTable';
 requires 'Module::Pluggable::Object';

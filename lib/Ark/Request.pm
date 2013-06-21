@@ -4,6 +4,7 @@ use Mouse;
 extends 'Plack::Request';
 
 use URI::WithBase;
+use URL::Encode;
 use Path::AttrRouter::Match;
 
 has match => (
@@ -39,5 +40,52 @@ sub uri_with {
     return $uri;
 }
 
-1;
+sub body_parameters {
+    my ($self) = @_;
+    $self->{'request.body'} ||= $self->SUPER::body_parameters;
+}
 
+sub query_parameters {
+    my ($self) = @_;
+    $self->{'request.query'} ||= $self->raw_query_parameters;
+}
+
+sub parameters {
+    my $self = shift;
+    $self->{'request.merged'} ||= do {
+        my $query = $self->query_parameters;
+        my $body  = $self->body_parameters;
+        Hash::MultiValue->new( $query->flatten, $body->flatten );
+    };
+}
+
+sub raw_body_parameters {
+    shift->SUPER::body_parameters;
+}
+
+sub raw_query_parameters {
+    my $self = shift;
+    my $env  = $self->{env};
+    $env->{'plack.request.query'} ||= Hash::MultiValue->new(@{URL::Encode::url_params_flat($env->{'QUERY_STRING'})});
+}
+
+sub raw_parameters {
+    my $self = shift;
+    $self->{env}{'plack.request.merged'} ||= do {
+        my $query = $self->raw_query_parameters;
+        my $body  = $self->SUPER::body_parameters;
+        Hash::MultiValue->new( $query->flatten, $body->flatten );
+    };
+}
+
+sub raw_param {
+    my $self = shift;
+
+    return keys %{ $self->raw_parameters } if @_ == 0;
+
+    my $key = shift;
+    return $self->raw_parameters->{$key} unless wantarray;
+    return $self->raw_parameters->get_all($key);
+}
+
+1;
