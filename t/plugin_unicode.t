@@ -19,10 +19,11 @@ use Test::More;
         my $test = 'テスト';
         Test::More::ok( utf8::is_utf8($test), 'utf8 flag automatically on by Ark' );
 
-        Test::More::ok(utf8::is_utf8( $c->req->parameters->{foo} ), 'request is utf8');
-        Test::More::is($c->req->parameters->{foo}, $test, 'request ok');
+        Test::More::ok(utf8::is_utf8( $c->req->parameters->get('foo') ), 'request is utf8');
+        Test::More::ok(!utf8::is_utf8( $c->req->raw_parameters->get('foo') ), 'raw parameters is not utf8');
+        Test::More::is($c->req->parameters->get('foo'), $test, 'request ok');
 
-        $c->res->body( $c->req->parameters->{foo} );
+        $c->res->body( $c->req->parameters->get('foo') );
     }
 }
 

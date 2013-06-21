@@ -16,7 +16,7 @@ plan skip_all => 'this test required HTTP::MobileAgent::Plugin::Charset' if $@;
 
     use_plugins qw{
         +T::Encoding::Test
-        MobileAgent           
+        MobileAgent
         Encoding::MobileJP
     };
 
@@ -60,7 +60,7 @@ use Ark::Test 'T',
     ];
 
     $request->header('User-Agent' => 'DoCoMo/2.0 P900i(c100;TB;W24H11)');
-    
+
     ok my ($response, $c) = ctx_request($request), 'AU Request';
     is $c->encoding->name, 'x-utf8-docomo', 'encoding is x-utf8-docomo';
 
@@ -86,7 +86,7 @@ use Ark::Test 'T',
     ];
 
     $request->header('User-Agent' => 'KDDI-HI31 UP.Browser/6.2.0.5 (GUI) MMP/2.0');
-    
+
     ok my ($response, $c) = ctx_request($request), 'AU Request';
     is $c->encoding->name, 'x-sjis-kddi-auto', 'encoding is x-sjis-kddi-auto';
 
@@ -112,7 +112,7 @@ use Ark::Test 'T',
     ];
 
     $request->header('User-Agent' => 'SoftBank/1.0/910T/TJ001/SN123456789012345');
-    
+
     ok my ($response, $c) = ctx_request($request), 'Softbank Request';
     is $c->encoding->name, 'x-utf8-softbank', 'encoding is x-utf8-softbank';
 
