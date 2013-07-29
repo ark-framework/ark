@@ -1,5 +1,8 @@
 Revision history for Perl module Ark
 
+0.38    Mon Jul 29 12:04:05 JST 2013
+    - [bug fix] ignore case in filterling of Plugin::CSRFDefender
+
 0.37    Wed May 15 21:10:47 JST 2013
      - CSRFDefender filters post form only
      - Session::State::URI is enabled in non mobile with specifications

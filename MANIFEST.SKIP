@@ -14,3 +14,4 @@
 ^\.git/
 ^\.shipit$
 ^MYMETA\.*
+RELEASE_POLICY.md
