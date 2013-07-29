@@ -35,6 +35,12 @@ use Test::More;
         $c->res->body(q{<form action="" method="post"></form>});
     }
 
+    sub test_get_capital :Local {
+        my ($self, $c) = @_;
+
+        $c->res->body(q{<form action="" method="POST"></form>});
+    }
+
     sub test_form :Local {
         my ($self, $c) = @_;
 
@@ -82,6 +88,11 @@ subtest 'validate NG' => sub {
 
 subtest 'rewrite body' => sub {
     my $c = ctx_get '/test_get';
+    like $c->res->body, qr/name="csrf_token"/;
+};
+
+subtest 'rewrite body capital' => sub {
+    my $c = ctx_get '/test_get_capital';
     like $c->res->body, qr/name="csrf_token"/;
 };
 
