@@ -1,13 +1,12 @@
 language: "perl"
+
 perl:
+  - "5.18"
   - "5.16"
   - "5.14"
   - "5.12"
   - "5.10"
 before_install:
-  - perlbrew install-cpanm -f
-  - cpanm -n Devel::Cover::Report::Coveralls LWP::Protocol::https
-install:
-  cpanm --with-develop --mirror=http://cpan.mirrors.travis-ci.org/ --mirror=https://github.com/kayac/orepan/raw/master/ --mirror-only --installdeps --notest .
+  - cpanm -n Devel::Cover::Report::Coveralls
 script:
-  perl Makefile.PL && cover -test --ignore_re='lib/Ark/View/' -report coveralls
+  perl Build.PL && ./Build build && cover -test -report coveralls
