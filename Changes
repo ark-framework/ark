@@ -1,7 +1,13 @@
 Revision history for Perl module Ark
 
+{{$NEXT}}
+
+0.39 2013-09-11T16:42:39Z
+     - first release on cpan
+     - minil migrate
+
 0.38    Mon Jul 29 12:04:05 JST 2013
-    - [bug fix] ignore case in filterling of Plugin::CSRFDefender
+     - [bug fix] ignore case in filterling of Plugin::CSRFDefender
 
 0.37    Wed May 15 21:10:47 JST 2013
      - CSRFDefender filters post form only
