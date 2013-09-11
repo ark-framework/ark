@@ -1,4 +1,0 @@
-steps = FindVersion, ChangeVersion, DistTest, Commit, Tag, MakeDist, UploadGitHub
-
-git.tagpattern = %v
-git.push_to    = origin
