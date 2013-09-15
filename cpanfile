@@ -28,13 +28,13 @@ requires 'Clone';
 #};
 
 #feature 'DBIC', 'Support DBIx::Class OR Mapper' => sub {
-    suggests 'DBIx::Class';
-    suggests 'DBD::SQLite';
+    recommends 'DBIx::Class';
+    recommends 'DBD::SQLite';
 #};
 
 #feature 'OpenID', 'Support OpenID Authentication' => sub {
-    suggests 'Net::OpenID::Consumer';
-    suggests 'LWPx::ParanoidAgent';
+    recommends 'Net::OpenID::Consumer';
+    recommends 'LWPx::ParanoidAgent';
 #};
 
 #feature 'I18N', 'Support I18N' => sub {
@@ -43,10 +43,10 @@ requires 'Clone';
 #};
 
 #feature 'Mobile', 'Support Mobile App' => sub {
-    suggests 'Encode::JP::Mobile';
-    suggests 'HTTP::MobileAgent';
-    suggests 'HTTP::MobileAgent::Plugin::Charset';
-    suggests 'OAuth::Lite';
+    recommends 'Encode::JP::Mobile';
+    recommends 'HTTP::MobileAgent';
+    recommends 'HTTP::MobileAgent::Plugin::Charset';
+    recommends 'OAuth::Lite';
 #};
 
 on develop => sub {
