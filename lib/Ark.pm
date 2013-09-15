@@ -73,6 +73,16 @@ __END__
 
 =head1 NAME
 
+Ark - light weight Catalyst-ish web application framework
+
+=head1 SYNOPSIS
+
+    use Ark;
+
+=head1 DESCRIPTION
+
+Ark is light weight Catalyst-ish web application framework.
+
 =begin html
 
 <a href="http://travis-ci.org/ark-framework/ark"><img src="https://secure.travis-ci.org/ark-framework/ark.png?branch=master" alt="Build Status"></a>
@@ -80,7 +90,12 @@ __END__
 
 =end html
 
-Ark - light weight Catalyst-ish web application framework
+=head1 LICENSE
+
+Copyright (C) Daisuke Murase.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
 
 =head1 AUTHOR
 
