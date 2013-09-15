@@ -1,4 +1,6 @@
 package Ark::Plugin::Session::State::Cookie;
+use strict;
+use warnings;
 use Ark::Plugin 'Session';
 
 has cookie_name => (

@@ -1,4 +1,6 @@
 package Ark::Plugin::MobileAgent;
+use strict;
+use warnings;
 use Ark::Plugin;
 
 use HTTP::MobileAgent;

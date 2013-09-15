@@ -1,4 +1,6 @@
 package Ark::Plugin::Authentication;
+use strict;
+use warnings;
 use Ark::Plugin;
 
 has auth => (

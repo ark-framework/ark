@@ -1,4 +1,6 @@
 package Ark::Plugin::Encoding::MobileJP;
+use strict;
+use warnings;
 use Ark::Plugin;
 
 use Encode;

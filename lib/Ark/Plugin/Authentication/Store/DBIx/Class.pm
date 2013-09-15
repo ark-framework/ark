@@ -1,4 +1,6 @@
 package Ark::Plugin::Authentication::Store::DBIx::Class;
+use strict;
+use warnings;
 use Ark::Plugin 'Auth';
 
 has dbix_class_model => (

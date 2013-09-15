@@ -1,4 +1,6 @@
 package Ark::Plugin::Session::State::URI::ExtendContext;
+use strict;
+use warnings;
 use Ark::Plugin;
 
 around uri_for => sub {

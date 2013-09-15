@@ -1,4 +1,6 @@
 package Ark::Plugin::FormValidator::Lite;
+use strict;
+use warnings;
 
 use Ark::Plugin;
 use FormValidator::Lite;

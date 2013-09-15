@@ -1,4 +1,6 @@
 package Ark::Plugin::ReproxyCallback::OpenSocial;
+use strict;
+use warnings;
 use Ark::Plugin;
 
 use HTTP::Request;

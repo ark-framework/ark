@@ -1,4 +1,6 @@
 package Ark::Plugin::Authentication::Backend;
+use strict;
+use warnings;
 use Ark 'Component';
 
 has user => (

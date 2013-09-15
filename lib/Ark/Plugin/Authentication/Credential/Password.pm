@@ -1,4 +1,6 @@
 package Ark::Plugin::Authentication::Credential::Password;
+use strict;
+use warnings;
 use Ark::Plugin 'Auth';
 
 has cred_password_user_field => (

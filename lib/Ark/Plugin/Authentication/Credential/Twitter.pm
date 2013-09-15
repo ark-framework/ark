@@ -1,4 +1,6 @@
 package Ark::Plugin::Authentication::Credential::Twitter;
+use strict;
+use warnings;
 use Ark::Plugin 'Auth';
 use Carp;
 

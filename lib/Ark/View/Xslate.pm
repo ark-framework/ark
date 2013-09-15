@@ -1,4 +1,6 @@
 package Ark::View::Xslate;
+use strict;
+use warnings;
 use Ark 'View';
 
 has path => (

@@ -1,4 +1,6 @@
 package Ark::Plugin::Session::Backend;
+use strict;
+use warnings;
 use Ark 'Component';
 
 has session_id => (

@@ -1,4 +1,6 @@
 package Ark::View::JSON;
+use strict;
+use warnings;
 use Ark 'View';
 
 has allow_callback => (

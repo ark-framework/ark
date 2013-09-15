@@ -1,4 +1,6 @@
 package Ark::Plugin::Encoding::Unicode;
+use strict;
+use warnings;
 use Ark::Plugin;
 use Scalar::Util 'blessed';
 

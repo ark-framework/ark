@@ -1,4 +1,6 @@
 package Ark::Plugin::Session::Store::Memory;
+use strict;
+use warnings;
 use Ark::Plugin 'Session';
 
 my %session;

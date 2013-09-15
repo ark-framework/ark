@@ -1,4 +1,6 @@
 package Ark::Plugin::Session;
+use strict;
+use warnings;
 use Ark::Plugin;
 
 has session => (

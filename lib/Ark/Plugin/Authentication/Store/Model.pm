@@ -1,4 +1,6 @@
 package Ark::Plugin::Authentication::Store::Model;
+use strict;
+use warnings;
 use Ark::Plugin 'Auth';
 
 has store_model => (

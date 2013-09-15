@@ -1,4 +1,6 @@
 package Ark::Plugin::Session::Store::Model;
+use strict;
+use warnings;
 use Ark::Plugin 'Session';
 
 has store_model => (

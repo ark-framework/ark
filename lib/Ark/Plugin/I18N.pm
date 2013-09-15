@@ -1,4 +1,6 @@
 package Ark::Plugin::I18N;
+use strict;
+use warnings;
 use Ark::Plugin;
 
 use I18N::LangTags ();

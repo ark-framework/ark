@@ -1,4 +1,6 @@
 package Ark::Plugin::Authentication::Store::Minimal;
+use strict;
+use warnings;
 use Ark::Plugin 'Auth';
 
 has store_minimal_users => (

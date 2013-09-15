@@ -1,4 +1,6 @@
 package Ark::Model::Adaptor;
+use strict;
+use warnings;
 use Ark 'Model';
 
 has class => (

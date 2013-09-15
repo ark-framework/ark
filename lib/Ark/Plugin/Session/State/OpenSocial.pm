@@ -1,4 +1,6 @@
 package Ark::Plugin::Session::State::OpenSocial;
+use strict;
+use warnings;
 use Ark::Plugin 'Session';
 
 around get_session_id => sub {

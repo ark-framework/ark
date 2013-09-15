@@ -1,4 +1,6 @@
 package Ark::Plugin::Session::State::URI;
+use strict;
+use warnings;
 use Ark::Plugin 'Session';
 
 has uri_query => (

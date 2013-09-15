@@ -1,4 +1,6 @@
 package Ark::Plugin::ReproxyCallback;
+use strict;
+use warnings;
 use Ark::Plugin;
 
 use URI;

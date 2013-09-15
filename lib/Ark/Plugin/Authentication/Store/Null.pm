@@ -1,4 +1,6 @@
 package Ark::Plugin::Authentication::Store::Null;
+use strict;
+use warnings;
 use Ark::Plugin 'Auth';
 
 around find_user => sub {

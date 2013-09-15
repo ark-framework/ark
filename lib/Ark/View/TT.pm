@@ -1,4 +1,6 @@
 package Ark::View::TT;
+use strict;
+use warnings;
 use Ark 'View';
 
 has include_path => (
