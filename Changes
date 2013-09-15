@@ -2,6 +2,10 @@ Revision history for Perl module Ark
 
 {{$NEXT}}
 
+0.391 2013-09-15T10:33:12Z
+    - fix deps and dependencies
+    - add use strict/warnings for CPANTS game
+
 0.39 2013-09-11T16:42:39Z
      - first release on cpan
      - minil migrate
