@@ -4,7 +4,7 @@
       "Daisuke Murase <typester@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.5.6, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Minilla/v0.5.6, CPAN::Meta::Converter version 2.132510",
    "license" : [
       "perl_5"
    ],
@@ -67,8 +67,11 @@
             "Devel::StackTrace" : "0",
             "Digest::SHA1" : "0",
             "Exporter::AutoClean" : "0",
+            "FormValidator::Lite" : "0",
             "HTML::Entities" : "0",
             "HTML::Shakan" : "0.16",
+            "HTTP::Cookies" : "0",
+            "HTTP::Message" : "0",
             "Module::Pluggable::Object" : "0",
             "Mouse" : "1.0",
             "Object::Container" : "0.08",
@@ -104,7 +107,7 @@
          "web" : "https://github.com/ark-framework/ark-perl"
       }
    },
-   "version" : "0.391",
+   "version" : "0.392",
    "x_contributors" : [
       "Masakazu Ohtsuka <o.masakazu@gmail.com>",
       "mattn <mattn.jp@gmail.com>",

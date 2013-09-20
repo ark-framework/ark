@@ -12,6 +12,8 @@ requires 'Module::Pluggable::Object';
 requires 'Data::Util';
 requires 'Class::Data::Inheritable';
 requires 'HTML::Entities';
+requires 'HTTP::Cookies';
+requires 'HTTP::Message';
 requires 'Data::UUID';
 requires 'Digest::SHA1';
 requires 'Devel::StackTrace';
@@ -21,6 +23,7 @@ requires 'Path::AttrRouter'  => '0.03';
 
 # build-in form generator/validator
 requires 'HTML::Shakan' => '0.16';
+requires 'FormValidator::Lite';
 requires 'Clone';
 
 #feature 'MT', 'Support MicroTemplate template engine' => sub {
