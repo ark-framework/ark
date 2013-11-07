@@ -28,7 +28,12 @@ sub prepare_encoding {
     my ($c) = @_;
     my $req = $c->request;
 
-    $req->decode_paremeters($c->encoding);
+    # for backward compatible
+    delete $req->env->{'plack.request.withencoding.body'};
+    delete $req->env->{'plack.request.withencoding.query'};
+    delete $req->env->{'plack.request.withencoding.merged'};
+
+    $req->env->{'plack.request.withencoding.encoding'} = $c->encoding->name;
 }
 
 my %htmlspecialchars = ( '&' => '&amp;', '<' => '&lt;', '>' => '&gt;', '"' => '&quot;' );

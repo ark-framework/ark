@@ -2,12 +2,7 @@ package Ark::Plugin::Encoding::Unicode;
 use Ark::Plugin;
 use Encode;
 
-sub prepare_encoding {
-    my $self = shift;
-    my $req  = $self->request;
-
-    $req->decode_paremeters('utf8');
-};
+sub prepare_encoding { }
 
 sub finalize_encoding {
     my $self = shift;

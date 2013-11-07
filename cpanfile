@@ -11,6 +11,7 @@ on test => sub {
 };
 
 requires 'Plack', '0.9910';
+requires 'Plack::Request::WithEncoding';
 requires 'CGI::Simple';
 requires 'Mouse'   => '1.0';
 requires 'Try::Tiny' => '0.02';
