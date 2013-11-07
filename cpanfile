@@ -52,13 +52,6 @@ requires 'Clone';
     recommends 'OAuth::Lite';
 #};
 
-on develop => sub {
-    requires 'Module::Install';
-    requires 'Module::Install::AuthorTests';
-    requires 'Module::Install::ReadmeMarkdownFromPod';
-    requires 'Module::Install::CPANfile';
-};
-
 on test => sub {
     requires 'Test::More' => '0.98';
     requires 'Test::Output';
