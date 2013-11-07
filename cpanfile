@@ -1,6 +1,6 @@
 requires 'Plack';
 requires 'Plack::Request';
-requires 'CGI::Simple';
+requires 'Cookie::Baker';
 requires 'Mouse',       '1.0';
 requires 'Try::Tiny',   '0.02';
 requires 'Path::Class', '0.16';

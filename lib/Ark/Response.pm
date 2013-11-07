@@ -3,7 +3,7 @@ use Mouse;
 
 use Carp ();
 use Scalar::Util ();
-use CGI::Simple::Cookie ();
+use Cookie::Baker ();
 use HTTP::Headers;
 use Plack::Util;
 
@@ -152,28 +152,10 @@ sub _finalize_cookies {
     my ( $self ) = @_;
 
     my $cookies = $self->cookies;
-    my @keys    = keys %$cookies;
-    if (@keys) {
-        for my $name (@keys) {
-            my $val    = $cookies->{$name};
-            my $cookie = (
-                Scalar::Util::blessed($val)
-                ? $val
-                : do {
-                    my %args = (
-                        -name    => $name,
-                        -value   => $val->{value},
-                        -domain  => $val->{domain},
-                        -path    => $val->{path},
-                        -secure  => ( $val->{secure} || 0 )
-                    );
-                    $args{"-expires"} = $val->{expires} if defined $val->{expires};
-                    CGI::Simple::Cookie->new(%args);
-                }
-            );
-
-            $self->headers->push_header( 'Set-Cookie' => $cookie->as_string );
-        }
+    for my $name (keys %$cookies) {
+        my $val    = $cookies->{$name};
+        my $cookie = Scalar::Util::blessed($val) ? "$val" : Cookie::Baker::bake_cookie($name, $val);
+        $self->headers->push_header( 'Set-Cookie' => $cookie );
     }
 }
 
