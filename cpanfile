@@ -18,7 +18,6 @@ requires 'Try::Tiny' => '0.02';
 requires 'Path::Class'  => '0.16';
 requires 'URI';
 requires 'URI::WithBase';
-requires 'URL::Encode';
 requires 'Text::MicroTemplate';
 requires 'Text::SimpleTable';
 requires 'Module::Pluggable::Object';
@@ -35,5 +34,3 @@ requires 'Path::AttrRouter'  => '0.03';
 # build-in form generator/validator
 requires 'HTML::Shakan' => '0.16';
 requires 'Clone';
-
-recommends 'URL::Encode::XS';
