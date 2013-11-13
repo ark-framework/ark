@@ -196,7 +196,6 @@ Ark::Plugin::CSRFDefender - CSRF Defender for Ark
     sub auto :Private {
         my ($self, $c) = @_;
 
-        # CSRF対策
         if (!$c->validate_csrf_token) {
             $self->res->code(403);
             $self->res->body("CSRF ERROR");
@@ -217,6 +216,12 @@ Ark::Plugin::CSRFDefender - CSRF Defender for Ark
 
         return $html;
     }
+
+=head1 CONFIGURATIONS
+
+=head2 C<< filter_form >>
+
+=head2 C<< validate_only >>
 
 =head1 METHODS
 
