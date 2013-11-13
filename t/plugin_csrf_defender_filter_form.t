@@ -16,6 +16,9 @@ use Test::More;
     conf 'Plugin::Session::State::Cookie' => {
         cookie_expires => '+3d',
     };
+    conf 'Plugin::CSRFDefender' => {
+        filter_form => 1,
+    };
 
     package TestApp::Controller::Root;
     use Ark 'Controller';
@@ -86,13 +89,18 @@ subtest 'validate NG' => sub {
     is $c->res->code, 200;
 };
 
-subtest 'don\'t rewrite body' => sub {
+subtest 'rewrite body' => sub {
     my $c = ctx_get '/test_get';
-    unlike $c->res->body, qr/name="csrf_token"/;
+    like $c->res->body, qr/name="csrf_token"/;
 };
 
-subtest 'don\'t auto rewrite body capital' => sub {
+subtest 'rewrite body capital' => sub {
     my $c = ctx_get '/test_get_capital';
+    like $c->res->body, qr/name="csrf_token"/;
+};
+
+subtest 'rewrite body' => sub {
+    my $c = ctx_get '/test_form';
     unlike $c->res->body, qr/name="csrf_token"/;
 };
 

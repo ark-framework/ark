@@ -73,6 +73,15 @@ has csrf_defender_error_action => (
     }
 );
 
+has csrf_defender_filter_form => (
+    is      => 'ro',
+    isa     => 'Bool',
+    lazy    => 1,
+    default => sub {
+        shift->class_config->{filter_form} || undef;
+    },
+);
+
 my $uuid = Data::UUID->new;
 has csrf_token => (
     is     => 'ro',
@@ -137,6 +146,7 @@ after finalize_body => sub {
 
     return if $c->res->binary;
     my $html = $c->res->body or return;
+    return unless $c->csrf_defender_filter_form;
 
     my $param_name = $c->csrf_defender_param_name;
     my $token      = $c->csrf_token;
