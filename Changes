@@ -2,6 +2,9 @@ Revision history for Perl module Ark
 
 {{$NEXT}}
 
+1.01 2013-11-13T14:26:13Z
+    - [fix] valid encoding handling in Plugin::Encoding::Null
+
 1.00 2013-11-13T13:12:57Z
     - Bump up Plack dependency
     - depend on Plack::Request::WithEncoding

@@ -74,7 +74,7 @@
             "Path::AttrRouter" : "0.03",
             "Path::Class" : "0.16",
             "Plack" : "0.9910",
-            "Plack::Request::WithEncoding" : "0",
+            "Plack::Request::WithEncoding" : "0.10",
             "Plack::Response" : "0",
             "Text::MicroTemplate" : "0",
             "Text::SimpleTable" : "0",
@@ -86,7 +86,6 @@
       },
       "test" : {
          "requires" : {
-            "HTTP::Cookies" : "0",
             "Test::More" : "0.98",
             "Test::Output" : "0"
          }
@@ -104,7 +103,7 @@
          "web" : "https://github.com/ark-framework/ark-perl"
       }
    },
-   "version" : "1.00",
+   "version" : "1.01",
    "x_contributors" : [
       "Masakazu Ohtsuka <o.masakazu@gmail.com>",
       "mattn <mattn.jp@gmail.com>",
