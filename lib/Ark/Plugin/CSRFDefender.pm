@@ -73,6 +73,15 @@ has csrf_defender_error_action => (
     }
 );
 
+has csrf_defender_filter_form => (
+    is      => 'ro',
+    isa     => 'Bool',
+    lazy    => 1,
+    default => sub {
+        shift->class_config->{filter_form} || undef;
+    },
+);
+
 my $uuid = Data::UUID->new;
 has csrf_token => (
     is     => 'ro',
@@ -132,18 +141,23 @@ sub _is_csrf_validation_needed {
         $method eq 'DELETE' ? 1 : ();
 }
 
+sub html_filter_for_csrf {
+    my ($c, $html) = @_;
+
+    my $reg = qr/<form\s*.*?\s*method=['"]?post['"]?\s*.*?>/i;
+    $html =~ s!($reg)!$1\n<input type="hidden" name="@{[$c->csrf_defender_param_name]}" value="@{[$c->csrf_token]}" />!isg;
+
+    $html;
+}
+
 after finalize_body => sub {
     my $c = shift;
 
     return if $c->res->binary;
     my $html = $c->res->body or return;
+    return unless $c->csrf_defender_filter_form;
 
-    my $param_name = $c->csrf_defender_param_name;
-    my $token      = $c->csrf_token;
-
-    my $reg = qr/<form\s*.*?\s*method=['"]?post['"]?\s*.*?>/i;
-    $html =~ s!($reg)!$1\n<input type="hidden" name="$param_name" value="$token" />!isg;
-
+    $html = $c->html_filter_for_csrf($html);
     $c->res->body($html);
 };
 
@@ -182,7 +196,6 @@ Ark::Plugin::CSRFDefender - CSRF Defender for Ark
     sub auto :Private {
         my ($self, $c) = @_;
 
-        # CSRF対策
         if (!$c->validate_csrf_token) {
             $self->res->code(403);
             $self->res->body("CSRF ERROR");
@@ -203,6 +216,12 @@ Ark::Plugin::CSRFDefender - CSRF Defender for Ark
 
         return $html;
     }
+
+=head1 CONFIGURATIONS
+
+=head2 C<< filter_form >>
+
+=head2 C<< validate_only >>
 
 =head1 METHODS
 
