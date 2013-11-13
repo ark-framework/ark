@@ -141,6 +141,15 @@ sub _is_csrf_validation_needed {
         $method eq 'DELETE' ? 1 : ();
 }
 
+sub html_filter_for_csrf {
+    my ($c, $html) = @_;
+
+    my $reg = qr/<form\s*.*?\s*method=['"]?post['"]?\s*.*?>/i;
+    $html =~ s!($reg)!$1\n<input type="hidden" name="@{[$c->csrf_defender_param_name]}" value="@{[$c->csrf_token]}" />!isg;
+
+    $html;
+}
+
 after finalize_body => sub {
     my $c = shift;
 
@@ -148,12 +157,7 @@ after finalize_body => sub {
     my $html = $c->res->body or return;
     return unless $c->csrf_defender_filter_form;
 
-    my $param_name = $c->csrf_defender_param_name;
-    my $token      = $c->csrf_token;
-
-    my $reg = qr/<form\s*.*?\s*method=['"]?post['"]?\s*.*?>/i;
-    $html =~ s!($reg)!$1\n<input type="hidden" name="$param_name" value="$token" />!isg;
-
+    $html = $c->html_filter_for_csrf($html);
     $c->res->body($html);
 };
 
