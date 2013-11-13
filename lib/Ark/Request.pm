@@ -3,8 +3,6 @@ use Mouse;
 
 extends 'Plack::Request::WithEncoding';
 
-use Encode;
-use URI::WithBase;
 use Path::AttrRouter::Match;
 
 has match => (
