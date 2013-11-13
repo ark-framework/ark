@@ -1,42 +1,12 @@
 package Ark::Response;
 use Mouse;
-
-use Carp ();
 use Scalar::Util ();
-use Cookie::Baker ();
-use HTTP::Headers;
-use Plack::Util;
 
-has status => (
-    is      => 'rw',
-    isa     => 'Int',
-    default => 200,
-);
-
-has headers => (
-    is      => 'rw',
-    isa     => 'HTTP::Headers',
-    lazy    => 1,
-    default => sub {
-        HTTP::Headers->new;
-    },
-);
-
-has body => (
-    is        => 'rw',
-    predicate => 'has_body',
-);
+extends 'Plack::Response';
 
 has binary => (
     is      => 'rw',
     default => 0,
-);
-
-has cookies => (
-    is      => 'rw',
-    isa     => 'HashRef',
-    lazy    => 1,
-    default => sub { {} },
 );
 
 has streaming => (
@@ -58,32 +28,14 @@ has deferred_response => (
 
 no Mouse;
 
-sub code { shift->status(@_) }
-sub content { shift->body(@_) }
-
-sub header { shift->headers->header(@_) }
-
-sub content_length {
-    shift->headers->content_length(@_);
-}
-
-sub content_type {
-    shift->headers->content_type(@_);
-}
-
-sub content_encoding {
-    shift->headers->content_encoding(@_);
-}
-
-sub location {
-    shift->headers->header('Location' => @_);
-}
+sub has_body { shift->{body} }
 
 sub finalize {
     my $self = shift;
-    die "missing status" unless $self->status();
+    $self->status(200) unless $self->status();
 
-    $self->_finalize_cookies();
+    my $headers = $self->headers->clone;
+    $self->_finalize_cookies($headers);
 
     if ($self->is_deferred) {
         if (my $cb = $self->deferred_response) {
@@ -94,8 +46,8 @@ sub finalize {
                 +[
                     map {
                         my $k = $_;
-                        map { ( $k => $_ ) } $self->headers->header($_);
-                    } $self->headers->header_field_names
+                        map { ( $k => $_ ) } $headers->header($_);
+                    } $headers->header_field_names
                 ],
                 $body,
             ];
@@ -118,8 +70,8 @@ sub finalize {
             +[
                 map {
                     my $k = $_;
-                    map { ( $k => $_ ) } $self->headers->header($_);
-                } $self->headers->header_field_names
+                    map { ( $k => $_ ) } $headers->header($_);
+                } $headers->header_field_names
             ],
         ];
 
@@ -134,28 +86,6 @@ sub finalize {
             push @$response, $self->_body;
             return $response;
         }
-    }
-}
-
-sub _body {
-    my $self = shift;
-    my $body = $self->body;
-       $body = [] unless defined $body;
-    if (!ref $body or Scalar::Util::blessed($body) && overload::Method($body, q(""))) {
-        return [ $body ];
-    } else {
-        return $body;
-    }
-}
-
-sub _finalize_cookies {
-    my ( $self ) = @_;
-
-    my $cookies = $self->cookies;
-    for my $name (keys %$cookies) {
-        my $val    = $cookies->{$name};
-        my $cookie = Scalar::Util::blessed($val) ? "$val" : Cookie::Baker::bake_cookie($name, $val);
-        $self->headers->push_header( 'Set-Cookie' => $cookie );
     }
 }
 
