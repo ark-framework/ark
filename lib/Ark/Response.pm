@@ -70,7 +70,15 @@ sub finalize {
             +[
                 map {
                     my $k = $_;
-                    map { ( $k => $_ ) } $headers->header($_);
+                    # steal from Plack::Response
+                    map {
+                        my $v = $_;
+                        $v =~ s/\015\012[\040|\011]+/chr(32)/ge; # replace LWS with a single SP
+                        $v =~ s/\015|\012//g; # remove CR and LF since the char is invalid here
+
+                        ( $k => $v )
+                    } $headers->header($_);
+
                 } $headers->header_field_names
             ],
         ];
