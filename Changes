@@ -2,6 +2,15 @@ Revision history for Perl module Ark
 
 {{$NEXT}}
 
+1.00 2013-11-13T13:12:57Z
+    - Bump up Plack dependency
+    - depend on Plack::Request::WithEncoding
+    - slim down code bases
+    - reduce deps
+    - cache Ark::Request#base and #uri for performance
+    - [INCOMPATIBLE] Plugin::CSRFDefender now need `filter_form` config for auto filtering html form tags
+    - for more steady error reporting at config loading (hisaichi5518)
+
 0.392 2013-09-20T04:28:49Z
     - fix deps
 
