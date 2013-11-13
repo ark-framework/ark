@@ -84,17 +84,13 @@ sub initialize {
                 my $file = $home->file($fn);
                 if (-e $file) {
                     my $c = do $file;
-                    if (my $e = $@) {
-                        die $e;
-                    }
-
-                    die 'config should return HASHREF'
-                        unless ref($c) and ref($c) eq 'HASH';
+                    die "$file: $@" if $@;
+                    die "$file: $!" unless defined $c;
+                    die 'config should return HASHREF' unless ref($c) eq 'HASH';
 
                     $conf = { %$conf, %$c };
                 }
             }
-
             $conf;
         },
     );
