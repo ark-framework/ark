@@ -84,6 +84,10 @@ sub initialize {
                 my $file = $home->file($fn);
                 if (-e $file) {
                     my $c = do $file;
+                    if (my $e = $@) {
+                        die $e;
+                    }
+
                     die 'config should return HASHREF'
                         unless ref($c) and ref($c) eq 'HASH';
 
