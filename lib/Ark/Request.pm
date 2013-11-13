@@ -3,7 +3,6 @@ use Mouse;
 
 extends 'Plack::Request';
 
-use URI::WithBase;
 use Path::AttrRouter::Match;
 
 has match => (

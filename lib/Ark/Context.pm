@@ -4,6 +4,7 @@ use Mouse::Util::TypeConstraints;
 
 use Scalar::Util ();
 use Try::Tiny;
+use URI::WithBase;
 
 our $DETACH    = 'ARK_DETACH';
 our $DEFERRED  = 'ARK_DEFERRED';
@@ -133,7 +134,7 @@ sub forward {
         }
         else {
             my $last = $self->stack->[-1];
-            
+
             if ($last
                  and $last->{obj}->isa('Ark::Controller')
                  and my $action = $self->get_action($target, $last->{obj}->namespace)) {
@@ -189,7 +190,7 @@ sub dispatch_private_action {
 
     my $action = ($self->router->get_actions($name, $self->req->action->namespace))[-1];
     return 1 unless ($action and $action->attributes->{Private});
-    
+
     $action->dispatch($self);
 
     !@{ $self->error };
