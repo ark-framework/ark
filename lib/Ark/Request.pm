@@ -1,8 +1,9 @@
 package Ark::Request;
 use Mouse;
 
-extends 'Plack::Request';
+extends 'Plack::Request::WithEncoding';
 
+use Encode;
 use URI::WithBase;
 use Path::AttrRouter::Match;
 
@@ -25,10 +26,24 @@ sub wrap {
     return $class->new( $req->env );
 }
 
+sub uri {
+    my $self = shift;
+
+    $self->{uri} ||= $self->SUPER::uri;
+    $self->{uri}->clone; # avoid destructive opearation
+}
+
+sub base {
+    my $self = shift;
+
+    $self->{base} ||= $self->SUPER::base;
+    $self->{base}->clone; # avoid destructive operation
+}
+
 sub uri_with {
     my ($self, $args) = @_;
 
-    my $uri = $self->uri->clone;
+    my $uri = $self->uri;
 
     my %params = $uri->query_form;
     while (my ($k, $v) = each %$args) {
@@ -40,4 +55,3 @@ sub uri_with {
 }
 
 1;
-
