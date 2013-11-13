@@ -3,7 +3,12 @@ use strict;
 use warnings;
 use Ark::Plugin;
 
-sub prepare_encoding { }; # XXX: Plack::Request::WithEncoding should support no encoding option.
+sub prepare_encoding {
+    my $c   = shift;
+    my $req = $c->request;
+    $req->env->{'plack.request.withencoding.encoding'} = undef;
+}
+
 sub finalize_encoding { };
 
 1;
