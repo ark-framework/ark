@@ -101,7 +101,7 @@
          "web" : "https://github.com/ark-framework/ark"
       }
    },
-   "version" : "1.01",
+   "version" : "1.10",
    "x_contributors" : [
       "Masakazu Ohtsuka <o.masakazu@gmail.com>",
       "mattn <mattn.jp@gmail.com>",
