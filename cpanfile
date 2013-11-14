@@ -42,18 +42,12 @@ requires 'Clone';
 #feature 'OpenID', 'Support OpenID Authentication' => sub {
     recommends 'Net::OpenID::Consumer';
     recommends 'LWPx::ParanoidAgent';
+    recommends 'OAuth::Lite';
 #};
 
 #feature 'I18N', 'Support I18N' => sub {
     recommends 'Locale::Maketext::Lexicon';
     recommends 'Locale::Maketext::Simple';
-#};
-
-#feature 'Mobile', 'Support Mobile App' => sub {
-    recommends 'Encode::JP::Mobile';
-    recommends 'HTTP::MobileAgent';
-    recommends 'HTTP::MobileAgent::Plugin::Charset';
-    recommends 'OAuth::Lite';
 #};
 
 on test => sub {
