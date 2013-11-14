@@ -1,10 +1,8 @@
 use strict;
 use warnings;
+use Test::Requires 'Text::MicroTemplate::Extended';
 use Test::More;
 use FindBin;
-
-eval { require Text::MicroTemplate::Extended; };
-plan skip_all => 'this test required Text::MicroTemplate::Extended' if $@;
 
 {
     package TestApp;

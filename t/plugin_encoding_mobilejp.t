@@ -1,14 +1,11 @@
+use strict;
+use warnings;
+use utf8;
+use Test::Requires 'Encode::JP::Mobile', 'HTTP::MobileAgent::Plugin::Charset';
+use Test::More;
+
 use Encode;
 use HTTP::Request::Common;
-
-use Test::More;
-use utf8;
-
-eval "use Encode::JP::Mobile";
-plan skip_all => 'this test required Encode::JP::Mobile' if $@;
-
-eval "use HTTP::MobileAgent::Plugin::Charset";
-plan skip_all => 'this test required HTTP::MobileAgent::Plugin::Charset' if $@;
 
 {
     package T;

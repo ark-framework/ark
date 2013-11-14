@@ -1,12 +1,10 @@
 use strict;
 use warnings;
 use Test::More;
+use Test::Requires 'Locale::Maketext::Lexicon', 'Locale::Maketext::Simple';
+
 use FindBin;
 use lib "$FindBin::Bin/plugin_i18n/lib";
-
-eval "require Locale::Maketext::Lexicon; require Locale::Maketext::Simple; 1";
-plan skip_all => 'DBIx::Class::Schema::Loader required to run this test' if $@;
-
 
 use Ark::Test 'TestApp';
 

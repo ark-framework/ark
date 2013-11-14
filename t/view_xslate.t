@@ -1,10 +1,8 @@
 use strict;
 use warnings;
+use Test::Requires 'Text::Xslate';
 use Test::More;
 use FindBin;
-
-eval { require Text::Xslate; };
-plan skip_all => 'this test required Text::Xslate' if $@;
 
 {
     package TestApp;

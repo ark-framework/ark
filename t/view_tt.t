@@ -1,10 +1,8 @@
 use strict;
 use warnings;
+use Test::Requires 'Template';
 use Test::More;
 use FindBin;
-
-eval { require Template; };
-plan skip_all => 'this test required Template-Toolkit' if $@;
 
 {
     package TestApp;

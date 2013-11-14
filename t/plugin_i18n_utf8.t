@@ -2,12 +2,10 @@ use utf8;
 use strict;
 use warnings;
 use Test::More;
+use Test::Requires 'Locale::Maketext::Lexicon', 'Locale::Maketext::Simple';
+
 use FindBin;
 use lib "$FindBin::Bin/plugin_i18n/lib";
-
-eval "require Locale::Maketext::Lexicon; require Locale::Maketext::Simple; 1";
-plan skip_all => 'Locale::Maketext::Lexicon and Locale::Maketext::Simple required to run this test' if $@;
-
 
 use Ark::Test 'TestApp';
 use Encode;
@@ -31,7 +29,6 @@ use Encode;
     my $r = $c->localize('logined as [_1]', '名無し');
     is $r, '名無し としてログインしています', 'localize response ok';
     is utf8::is_utf8($r), 1, 'utf-8 ok';
-    
 }
 
 done_testing;

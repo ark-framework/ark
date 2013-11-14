@@ -1,10 +1,7 @@
 use strict;
 use warnings;
+use Test::Requires 'Cache::MemoryCache';
 use Test::More;
-
-eval "use Cache::MemoryCache";
-plan skip_all => 'Cache::MemoryCache required to run this test' if $@;
-
 
 {
     package T1;

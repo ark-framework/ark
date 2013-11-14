@@ -1,19 +1,11 @@
 use strict;
 use warnings;
 use Test::More;
-use File::Temp;
-
-BEGIN {
-    eval "use DBI; use DBIx::Class::Schema::Loader";
-    plan skip_all => 'DBIx::Class::Schema::Loader required to run this test' if $@;
-}
-
-my $db = "testdatabase";
-END { unlink $db }
+use Test::Requires 'DBI', 'DBIx::Class::Schema::Loader';
 
 {
     # create Database
-    my $dbh = DBI->connect("dbi:SQLite:dbname=$db")
+    my $dbh = DBI->connect("dbi:SQLite::memory:")
         or die DBI->errstr;
 
     $dbh->do(<<'...');
