@@ -33,11 +33,6 @@ requires 'Clone';
 recommends 'Text::Xslate';
 recommends 'Text::MicroTemplate::Extended' => '0.09';
 
-#feature 'I18N', 'Support I18N' => sub {
-    recommends 'Locale::Maketext::Lexicon';
-    recommends 'Locale::Maketext::Simple';
-#};
-
 on test => sub {
     requires 'Test::More' => '0.98';
     requires 'Test::Output';
