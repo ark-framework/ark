@@ -30,8 +30,14 @@ requires 'HTML::Shakan' => '0.16';
 requires 'FormValidator::Lite';
 requires 'Clone';
 
+# templates
 recommends 'Text::Xslate';
 recommends 'Text::MicroTemplate::Extended' => '0.09';
+
+suggests 'Ark::Plugin::Authentication';
+suggests 'Ark::Plugin::MobileJP';
+suggests 'Ark::Plugin::I18N';
+suggests 'Ark::Plugin::ReproxyCallback';
 
 on test => sub {
     requires 'Test::More' => '0.98';

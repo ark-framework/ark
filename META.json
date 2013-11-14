@@ -43,17 +43,8 @@
       },
       "runtime" : {
          "recommends" : {
-            "DBD::SQLite" : "0",
-            "DBIx::Class" : "0",
-            "Encode::JP::Mobile" : "0",
-            "HTTP::MobileAgent" : "0",
-            "HTTP::MobileAgent::Plugin::Charset" : "0",
-            "LWPx::ParanoidAgent" : "0",
-            "Locale::Maketext::Lexicon" : "0",
-            "Locale::Maketext::Simple" : "0",
-            "Net::OpenID::Consumer" : "0",
-            "OAuth::Lite" : "0",
-            "Text::MicroTemplate::Extended" : "0.09"
+            "Text::MicroTemplate::Extended" : "0.09",
+            "Text::Xslate" : "0"
          },
          "requires" : {
             "Class::Data::Inheritable" : "0",
@@ -82,12 +73,19 @@
             "URI" : "0",
             "URI::WithBase" : "0",
             "perl" : "5.008001"
+         },
+         "suggests" : {
+            "Ark::Plugin::Authentication" : "0",
+            "Ark::Plugin::I18N" : "0",
+            "Ark::Plugin::MobileJP" : "0",
+            "Ark::Plugin::ReproxyCallback" : "0"
          }
       },
       "test" : {
          "requires" : {
             "Test::More" : "0.98",
-            "Test::Output" : "0"
+            "Test::Output" : "0",
+            "Test::Requires" : "0"
          }
       }
    },
