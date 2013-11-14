@@ -30,20 +30,8 @@ requires 'HTML::Shakan' => '0.16';
 requires 'FormValidator::Lite';
 requires 'Clone';
 
-#feature 'MT', 'Support MicroTemplate template engine' => sub {
-    recommends 'Text::MicroTemplate::Extended' => '0.09';
-#};
-
-#feature 'DBIC', 'Support DBIx::Class OR Mapper' => sub {
-    recommends 'DBIx::Class';
-    recommends 'DBD::SQLite';
-#};
-
-#feature 'OpenID', 'Support OpenID Authentication' => sub {
-    recommends 'Net::OpenID::Consumer';
-    recommends 'LWPx::ParanoidAgent';
-    recommends 'OAuth::Lite';
-#};
+recommends 'Text::Xslate';
+recommends 'Text::MicroTemplate::Extended' => '0.09';
 
 #feature 'I18N', 'Support I18N' => sub {
     recommends 'Locale::Maketext::Lexicon';
