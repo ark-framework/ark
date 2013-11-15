@@ -18,9 +18,11 @@ has match => (
 
 no Mouse;
 
+# for backward compatible
 sub wrap {
     my ($class, $req) = @_;
 
+    warn 'Ark::Request#wrap is deprecated. use new() directory instead';
     return $class->new( $req->env );
 }
 

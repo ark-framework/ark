@@ -5,8 +5,6 @@ use Ark::Context;
 use Ark::Request;
 use Ark::Response;
 
-use Plack::Request;
-
 use Exporter::AutoClean;
 use Path::Class qw/file dir/;
 use Path::AttrRouter;
@@ -24,8 +22,7 @@ has handler => (
         my $self = shift;
 
         sub {
-            my $req = Plack::Request->new(shift);
-            my $res = $self->handle_request($req);
+            my $res = $self->handle_request(shift);
             $res->finalize;
         };
     },
@@ -455,9 +452,8 @@ sub path_to {
 }
 
 sub handle_request {
-    my ($self, $req) = @_;
-
-    $req = Ark::Request->wrap($req);
+    my ($self, $env) = @_;
+    my $req = Ark::Request->new($env);
 
     my $context = $self->context_class->new( app => $self, request => $req );
     $self->context($context)->process;

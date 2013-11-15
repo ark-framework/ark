@@ -4,6 +4,17 @@ use Scalar::Util ();
 
 extends 'Plack::Response';
 
+has body => (
+    is        => 'rw',
+    predicate => 'has_body',
+);
+
+has context => (
+    is       => 'ro',
+    isa      => 'Ark::Context',
+    weak_ref => 1,
+);
+
 has binary => (
     is      => 'rw',
     default => 0,
@@ -27,8 +38,6 @@ has deferred_response => (
 );
 
 no Mouse;
-
-sub has_body { shift->{body} }
 
 sub finalize {
     my $self = shift;

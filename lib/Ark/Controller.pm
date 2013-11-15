@@ -1,11 +1,6 @@
 package Ark::Controller;
 use Mouse;
-use Path::AttrRouter::Controller;
-
-BEGIN {
-    extends 'Path::AttrRouter::Controller';
-}
-
+extends 'Path::AttrRouter::Controller';
 no Mouse;
 
 sub ACTION {
