@@ -2,6 +2,7 @@ package Ark::Context::Debug;
 use Mouse::Role;
 
 use Try::Tiny;
+use HTML::Escape ();
 
 has debug_report => (
     is      => 'rw',
@@ -276,7 +277,7 @@ sub debug_print_context {
                 next if $cur_line < $start;
                 my @tag = $cur_line == $linenum ? qw(<strong> </strong>) : ( q{}, q{} );
                 $code .= sprintf( '%s%5d: %s%s',
-                    $tag[0], $cur_line, $line ? HTML::Entities::encode_entities($line) : q{},
+                    $tag[0], $cur_line, $line ? HTML::Escape::escape_html($line) : q{},
                     $tag[1], );
             }
         }
@@ -285,5 +286,3 @@ sub debug_print_context {
 }
 
 1;
-
-

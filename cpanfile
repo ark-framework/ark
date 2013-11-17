@@ -14,6 +14,7 @@ requires 'Digest::SHA1';
 requires 'Object::Container' => '0.08';
 requires 'Exporter::AutoClean';
 requires 'Path::AttrRouter'  => '0.03';
+requires 'HTML::Escape';
 
 # Ark::Test
 requires 'HTTP::Cookies';
@@ -21,7 +22,6 @@ requires 'HTTP::Message';
 
 # Context::Debug
 requires 'Devel::StackTrace';
-requires 'HTML::Entities';
 requires 'Text::SimpleTable';
 requires 'Text::MicroTemplate';
 
