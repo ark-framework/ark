@@ -41,6 +41,10 @@ no Mouse;
 sub finalize {
     my $self = shift;
 
+    if (!$self->is_deferred && !$self->is_streaming) {
+        return $self->SUPER::finalize;
+    }
+
     my $headers = $self->headers->clone;
     $self->_finalize_cookies($headers);
 
@@ -71,7 +75,7 @@ sub finalize {
             return $r;
         }
     }
-    else {
+    else { # streaming
         my $response = [
             $self->status,
             +[
@@ -90,17 +94,11 @@ sub finalize {
             ],
         ];
 
-        if ($self->is_streaming) {
-            return sub {
-                my $respond = shift;
-                my $writer  = $respond->($response);
-                $self->streaming->($writer);
-            };
-        }
-        else {
-            push @$response, $self->_body;
-            return $response;
-        }
+        return sub {
+            my $respond = shift;
+            my $writer  = $respond->($response);
+            $self->streaming->($writer);
+        };
     }
 }
 
