@@ -1,6 +1,5 @@
 package Ark::Context;
 use Mouse;
-use Mouse::Util::TypeConstraints;
 
 use Scalar::Util ();
 use Try::Tiny;

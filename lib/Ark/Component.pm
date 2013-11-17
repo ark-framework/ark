@@ -1,7 +1,7 @@
 package Ark::Component;
 use Mouse;
 
-extends 'Mouse::Object', 'Class::Data::Inheritable';
+extends 'Class::Data::Inheritable';
 
 __PACKAGE__->mk_classdata(qw/__component_config/);
 

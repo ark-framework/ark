@@ -7,7 +7,7 @@ use Exporter::AutoClean;
 use HTML::Shakan;
 use HTML::Shakan::Utils;
 
-extends 'Mouse::Object', 'Class::Data::Inheritable';
+extends 'Class::Data::Inheritable';
 
 __PACKAGE__->mk_classdata('_fields_data');
 __PACKAGE__->mk_classdata('_fields_data_order');
