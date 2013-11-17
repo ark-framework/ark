@@ -23,8 +23,7 @@ has response => (
     isa     => 'Ark::Response',
     lazy    => 1,
     default => sub {
-        my $self = shift;
-        Ark::Response->new( context => $self );
+        Ark::Response->new;
     },
 );
 
@@ -312,4 +311,3 @@ sub DEMOLISH {
 }
 
 __PACKAGE__->meta->make_immutable;
-

@@ -9,10 +9,9 @@ has body => (
     predicate => 'has_body',
 );
 
-has context => (
-    is       => 'ro',
-    isa      => 'Ark::Context',
-    weak_ref => 1,
+has status => (
+    is      => 'rw',
+    default => 200,
 );
 
 has binary => (
@@ -41,7 +40,6 @@ no Mouse;
 
 sub finalize {
     my $self = shift;
-    $self->status(200) unless $self->status();
 
     my $headers = $self->headers->clone;
     $self->_finalize_cookies($headers);
