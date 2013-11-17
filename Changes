@@ -2,6 +2,9 @@ Revision history for Perl module Ark
 
 {{$NEXT}}
 
+1.12 2013-11-17T09:14:44Z
+    - fix repository URL only.
+
 1.11 2013-11-17T08:54:36Z
     - code cleanup
     - depends on HTML::Escape and remove deps of HTML::Entities

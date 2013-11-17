@@ -92,16 +92,16 @@
    "release_status" : "unstable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/ark-framework/ark-perl/issues"
+         "web" : "https://github.com/ark-framework/ark/issues"
       },
-      "homepage" : "https://github.com/ark-framework/ark-perl",
+      "homepage" : "https://github.com/ark-framework/ark",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/ark-framework/ark-perl.git",
-         "web" : "https://github.com/ark-framework/ark-perl"
+         "url" : "git://github.com/ark-framework/ark.git",
+         "web" : "https://github.com/ark-framework/ark"
       }
    },
-   "version" : "1.11",
+   "version" : "1.12",
    "x_contributors" : [
       "Masakazu Ohtsuka <o.masakazu@gmail.com>",
       "mattn <mattn.jp@gmail.com>",

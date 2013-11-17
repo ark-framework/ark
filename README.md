@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ark-framework/ark-perl.png?branch=master)](https://travis-ci.org/ark-framework/ark-perl) [![Coverage Status](https://coveralls.io/repos/ark-framework/ark-perl/badge.png?branch=master)](https://coveralls.io/r/ark-framework/ark-perl?branch=master)
+[![Build Status](https://travis-ci.org/ark-framework/ark.png?branch=master)](https://travis-ci.org/ark-framework/ark) [![Coverage Status](https://coveralls.io/repos/ark-framework/ark/badge.png?branch=master)](https://coveralls.io/r/ark-framework/ark?branch=master)
 # NAME
 
 Ark - light weight Catalyst-ish web application framework
