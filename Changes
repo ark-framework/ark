@@ -2,6 +2,10 @@ Revision history for Perl module Ark
 
 {{$NEXT}}
 
+1.13 2013-11-19T11:16:09Z
+    - X-JSON-Status support
+    - use JSON instead of JSON::Any in Ark::View::JSON
+
 1.12 2013-11-17T09:14:44Z
     - fix repository URL only.
 

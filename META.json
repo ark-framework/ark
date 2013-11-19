@@ -43,6 +43,7 @@
       },
       "runtime" : {
          "recommends" : {
+            "JSON" : "0",
             "Text::MicroTemplate::Extended" : "0.09",
             "Text::Xslate" : "0"
          },
@@ -101,7 +102,7 @@
          "web" : "https://github.com/ark-framework/ark"
       }
    },
-   "version" : "1.12",
+   "version" : "1.13",
    "x_contributors" : [
       "Masakazu Ohtsuka <o.masakazu@gmail.com>",
       "mattn <mattn.jp@gmail.com>",
