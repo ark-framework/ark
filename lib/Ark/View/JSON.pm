@@ -2,6 +2,7 @@ package Ark::View::JSON;
 use strict;
 use warnings;
 use Ark 'View';
+use JSON;
 
 has allow_callback => (
     is      => 'rw',
@@ -25,13 +26,7 @@ has json_driver => (
     lazy    => 1,
     default => sub {
         my $self = shift;
-        $self->ensure_class_loaded('JSON::Any');
-        JSON::Any->import;
-
-        JSON::Any->new(
-            utf8         => 1,
-            allow_nonref => 1,
-        );
+        JSON->new->utf8->allow_nonref;
     },
 );
 

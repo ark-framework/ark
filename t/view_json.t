@@ -1,9 +1,8 @@
 use strict;
 use warnings;
-use Test::Requires 'JSON::Any';
+use Test::Requires 'JSON';
 use Test::More;
 use FindBin;
-use JSON::Any;
 
 {
     package TestApp;
@@ -42,7 +41,7 @@ use JSON::Any;
 use Ark::Test 'TestApp',
     components => [qw/Controller::Root View::JSON/];
 
-my $decoder = JSON::Any->new;
+my $decoder = JSON->new;
 
 {
     my ($res, $c) = ctx_request(GET => '/no_status');
@@ -59,6 +58,5 @@ my $decoder = JSON::Any->new;
     is_deeply $json, {test => 1, status => 200};
     is $c->res->header("X-JSON-Status"), 200;
 }
-
 
 done_testing;

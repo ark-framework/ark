@@ -34,6 +34,9 @@ requires 'Clone';
 recommends 'Text::Xslate';
 recommends 'Text::MicroTemplate::Extended' => '0.09';
 
+# View::JSON
+recommends 'JSON';
+
 suggests 'Ark::Plugin::Authentication';
 suggests 'Ark::Plugin::MobileJP';
 suggests 'Ark::Plugin::I18N';
