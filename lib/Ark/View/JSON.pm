@@ -45,6 +45,11 @@ has json_dumper => (
     },
 );
 
+has status_code_field => (
+    is  => 'rw',
+    isa => "Str",
+);
+
 # steal code from Catalyst::View::JSON
 sub process {
     my ($self, $c) = @_;
@@ -85,6 +90,12 @@ sub process {
         $c->res->content_type('application/x-javascript; charset=utf-8');
     } else {
         $c->res->content_type('application/json; charset=utf-8');
+    }
+
+    if (defined (my $status_code_field = $self->status_code_field)) {
+        if (exists $data->{$status_code_field}) {
+            $c->res->header('X-JSON-Status' => $data->{$status_code_field});
+        }
     }
 
     my $output;
