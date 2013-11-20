@@ -2,8 +2,13 @@ Revision history for Perl module Ark
 
 {{$NEXT}}
 
+1.20 2013-11-20T07:41:04Z
+    - [INCOMPATIBLE] rename X-JSON-Status to X-API-Status in View::JSON (hisaichi5518)
+    - add View::JSON#status_code_header attribute
+    - depends on HTML::Shakan 2.00
+
 1.13 2013-11-19T11:16:09Z
-    - X-JSON-Status support
+    - X-JSON-Status support (hisaichi5518)
     - use JSON instead of JSON::Any in Ark::View::JSON
 
 1.12 2013-11-17T09:14:44Z
