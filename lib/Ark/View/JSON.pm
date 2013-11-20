@@ -41,8 +41,14 @@ has json_dumper => (
 );
 
 has status_code_field => (
-    is  => 'rw',
+    is  => 'ro',
     isa => "Str",
+);
+
+has status_code_header => (
+    is      => 'ro',
+    isa     => "Str",
+    default => 'X-API-Status',
 );
 
 # steal code from Catalyst::View::JSON
@@ -89,7 +95,7 @@ sub process {
 
     if (defined (my $status_code_field = $self->status_code_field)) {
         if (exists $data->{$status_code_field}) {
-            $c->res->header('X-API-Status' => $data->{$status_code_field});
+            $c->res->header($self->status_code_header => $data->{$status_code_field});
         }
     }
 
