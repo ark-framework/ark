@@ -11,9 +11,9 @@ requires 'Class::Data::Inheritable';
 requires 'Data::UUID';
 requires 'Data::Util';
 requires 'Digest::SHA1';
-requires 'Object::Container' => '0.08';
+requires 'Object::Container', '0.08';
 requires 'Exporter::AutoClean';
-requires 'Path::AttrRouter'  => '0.03';
+requires 'Path::AttrRouter', '0.03';
 requires 'HTML::Escape';
 
 # Ark::Test
@@ -26,13 +26,13 @@ requires 'Text::SimpleTable';
 requires 'Text::MicroTemplate';
 
 # build-in form generator/validator
-requires 'HTML::Shakan' => '0.16';
+requires 'HTML::Shakan', '2.00';
 requires 'FormValidator::Lite';
 requires 'Clone';
 
 # templates
 recommends 'Text::Xslate';
-recommends 'Text::MicroTemplate::Extended' => '0.09';
+recommends 'Text::MicroTemplate::Extended', '0.09';
 
 # View::JSON
 recommends 'JSON';
