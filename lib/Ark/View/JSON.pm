@@ -89,7 +89,7 @@ sub process {
 
     if (defined (my $status_code_field = $self->status_code_field)) {
         if (exists $data->{$status_code_field}) {
-            $c->res->header('X-JSON-Status' => $data->{$status_code_field});
+            $c->res->header('X-API-Status' => $data->{$status_code_field});
         }
     }
 

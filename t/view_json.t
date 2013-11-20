@@ -56,7 +56,7 @@ my $decoder = JSON->new;
     my $json = $decoder->decode($res->content);
 
     is_deeply $json, {test => 1, status => 200};
-    is $c->res->header("X-JSON-Status"), 200;
+    is $c->res->header("X-API-Status"), 200;
 }
 
 done_testing;
