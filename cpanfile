@@ -15,6 +15,8 @@ requires 'Object::Container', '0.08';
 requires 'Exporter::AutoClean';
 requires 'Path::AttrRouter', '0.03';
 requires 'HTML::Escape';
+requires 'URL::Encode';
+requires 'HTTP::MultiPartParser';
 
 # Ark::Test
 requires 'HTTP::Cookies';
