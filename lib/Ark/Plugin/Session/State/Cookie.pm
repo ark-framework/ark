@@ -41,9 +41,9 @@ has cookie_expires => (
         my $self = shift;
         exists $self->class_config->{cookie_expires}
              ? $self->class_config->{cookie_expires}
-      : exists $self->app->config->{'Plugin::Session'}->{expires}
-             ? $self->app->config->{'Plugin::Session'}->{expires}
-      :        '+1d';    # 1day
+      : exists $self->app->config->{'Plugin::Session'}->{expire}
+             ? $self->app->config->{'Plugin::Session'}->{expire}
+      :        '60 * 60 * 24';    # 1day
     },
 );
 
@@ -132,7 +132,7 @@ sub make_cookie {
 
     my $cookie = {
         value   => $sid,
-        expires => $self->cookie_expires,
+        expires => time + $self->cookie_expires,
         secure  => $self->cookie_secure,
         $self->cookie_domain ? (domain => $self->cookie_domain) : (),
         $self->cookie_path   ? (path   => $self->cookie_path) : (),

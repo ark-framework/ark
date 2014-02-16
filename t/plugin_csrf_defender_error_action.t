@@ -14,7 +14,7 @@ use Test::More;
         /;
 
     config 'Plugin::Session::State::Cookie' => {
-        cookie_expires => '+3d',
+        cookie_expires => 60*60*24 * 3,
     };
 
     config 'Plugin::CSRFDefender' => {
