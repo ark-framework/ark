@@ -106,7 +106,8 @@
          "web" : "https://github.com/ark-framework/ark"
       }
    },
-   "version" : "1.21",
+   "version" : "1.22",
+   "x_authority" : "cpan:SONGMU",
    "x_contributors" : [
       "Daisuke Murase <typester@gmail.com>",
       "FUJIWARA Shunichiro <fujiwara.shunichiro@gmail.com>",

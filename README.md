@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ark-framework/ark.svg?branch=master)](https://travis-ci.org/ark-framework/ark) [![Coverage Status](https://img.shields.io/coveralls/ark-framework/ark/master.svg?style=flat)](https://coveralls.io/r/ark-framework/ark?branch=master)
+[![Actions Status](https://github.com/ark-framework/ark/workflows/Test/badge.svg)](https://github.com/ark-framework/ark/actions) [![Coverage Status](https://img.shields.io/coveralls/ark-framework/ark/master.svg?style=flat)](https://coveralls.io/r/ark-framework/ark?branch=master)
 # NAME
 
 Ark - light weight Catalyst-ish web application framework

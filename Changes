@@ -2,6 +2,9 @@ Revision history for Perl module Ark
 
 {{$NEXT}}
 
+1.22 2020-03-13T11:56:42Z
+    - fix dependencies
+
 1.21 2020-03-13T06:48:52Z
     - support HttpOnly and SameSite in Plugin::Session::State::Cookie (mackee)
 
