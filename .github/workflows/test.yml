@@ -1,0 +1,68 @@
+name: "Test"
+on:
+  pull_request:
+  push:
+    branches:
+    - 'master'
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          # - windows-latest
+          - macos-latest
+        perl:
+          - "5.30"
+          - "5.28"
+          - "5.26"
+          - "5.24"
+          - "5.22"
+          - "5.20"
+          - "5.18"
+          - "5.16"
+          - "5.14"
+          - "5.12"
+          - "5.10"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Perl ${{ matrix.perl }}
+        uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: ${{ matrix.perl }}
+
+      - name: Install
+        run: |
+          cpanm --notest --installdeps .
+          perl Build.PL
+          ./Build build
+      - name: Test
+        run: prove -lv t
+
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up latest Perl 5
+        uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: '5.x'
+
+      - name: Install
+        run: |
+          cpanm --notest --installdeps .
+          cpanm --notest Devel::Cover Devel::Cover::Report::Coveralls
+          perl Build.PL
+          ./Build build
+      - name: Test
+        run: cover -test -report coveralls
+        env:
+          COVERALLS_REPO_TOKEN: ${{ github.token }}
