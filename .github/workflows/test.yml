@@ -64,3 +64,5 @@ jobs:
           ./Build build
       - name: Test
         run: cover -test -report coveralls
+        env:
+          COVERALLS_REPO_TOKEN: ${{ github.token }}
