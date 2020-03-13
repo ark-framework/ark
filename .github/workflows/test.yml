@@ -39,7 +39,7 @@ jobs:
 
       - name: Install
         run: |
-          cpanm --installdeps .
+          cpanm --notest --installdeps .
           perl Build.PL
           ./Build build
       - name: Test
