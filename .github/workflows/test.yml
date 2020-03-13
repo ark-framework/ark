@@ -44,3 +44,23 @@ jobs:
           ./Build build
       - name: Test
         run: prove -lv t
+
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up latest Perl 5
+        uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: '5.x'
+
+      - name: Install
+        run: |
+          cpanm --notest --installdeps .
+          cpanm --notest Devel::Cover Devel::Cover::Report::Coveralls
+          perl Build.PL
+          ./Build build
+      - name: Test
+        run: cover -test -report coveralls
