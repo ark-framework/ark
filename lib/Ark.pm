@@ -1,6 +1,6 @@
 package Ark;
 use 5.008001;
-use Mouse;
+use Mouse 1.00;
 use Mouse::Exporter;
 
 use Ark::Core;
